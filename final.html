@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forever With You ❤️</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #1a0011, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+  }
+
+  #start-prompt {
+    position: fixed;
+    font-size: 24px;
+    color: #ff66b3;
+    animation: pulse 1.5s infinite;
+    z-index: 100;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+  }
+
+  #container {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 1s ease;
+    pointer-events: none;
+  }
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ff4da6;
+    box-shadow: 0 0 40px #ff1a75;
+    margin-bottom: 20px;
+    animation: imgPulse 2s infinite;
+  }
+
+  @keyframes imgPulse {
+    0% { box-shadow: 0 0 20px #ff4da6; }
+    50% { box-shadow: 0 0 60px #ff1a75; }
+    100% { box-shadow: 0 0 20px #ff4da6; }
+  }
+
+  .kneel { font-size: 50px; margin-bottom: 10px; }
+  h2 { font-size: 28px; margin: 5px 0; color: #ff99cc; animation: glow 1.5s infinite alternate; }
+  h1 { font-size: 32px; margin: 10px 0; color: #ff66b3; animation: glow 1.5s infinite alternate; }
+  @keyframes glow { from { text-shadow: 0 0 10px #ff4da6; } to { text-shadow: 0 0 30px #ff1a75; } }
+
+  p { font-size: 18px; max-width: 500px; line-height: 1.6; padding: 0 20px; }
+
+  .blast {
+    position: absolute;
+    font-size: 25px;
+    animation: explode 1.5s ease-out forwards;
+    pointer-events: none;
+  }
+
+  @keyframes explode {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(5); opacity: 0; }
+  }
+
+  #flash {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* Streamable video corner */
+  #cornerVideo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 150px;
+    height: 100px;
+    z-index: 101;
+  }
+</style>
+</head>
+<body onclick="startExperience()">
+
+<div id="start-prompt">Click anywhere for a surprise... ❤️</div>
+<div id="flash"></div>
+
+<div id="container">
+ <a href="https://imgbb.com/"><img src="https://i.ibb.co/VcrvH7Xt/naana.jpg" alt="naana" border="0"></a>
+  <div class="kneel">💍❤️</div>
+  <h2>Happy Valentine’s Day Bava</h2>
+  <h1>Will You Stay With Me Forever?</h1>
+  <p>
+    7 Years ayyaka kuda...<br>
+    naa decision ippudu kuda nuvve.<br><br>
+    Manam chusina anni phases tarvata kuda...<br>
+    naa future lo pakkana undali ani korukuntunna dhi ninne!!!!.<br><br>
+    7 years kaadu... lifetime kavali. ❤️
+  </p>
+</div>
+
+<!-- Streamable video in corner -->
+<div id="cornerVideo">
+  <iframe allow="fullscreen" allowfullscreen 
+    src="https://streamable.com/e/i2rt4j?" 
+    style="border:none; width:100%; height:100%; overflow:hidden;">
+  </iframe>
+</div>
+
+<!-- YouTube background music -->
+<iframe width="0" height="0" src="https://www.youtube.com/embed/7Yru3_H5dQo?autoplay=1&loop=1&playlist=7Yru3_H5dQo" 
+frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<script>
+let started = false;
+
+function startExperience() {
+  if (started) return;
+  started = true;
+
+  // Hide prompt
+  document.getElementById("start-prompt").style.display = "none";
+
+  // Flash effect
+  const flash = document.getElementById("flash");
+  const container = document.getElementById("container");
+  flash.style.opacity = "1";
+  setTimeout(() => { flash.style.opacity = "0"; }, 300);
+
+  // Reveal container
+  container.style.opacity = "1";
+  container.style.transform = "scale(1)";
+
+  // Heart blast every 120ms
+  setInterval(createHeart, 120);
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("blast");
+  const hearts = ["💖","💘","💝","💗"];
+  heart.innerHTML = hearts[Math.floor(Math.random()*hearts.length)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = Math.random() * 100 + "vh";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 1600);
+}
+</script>
+
+</body>
+</html>

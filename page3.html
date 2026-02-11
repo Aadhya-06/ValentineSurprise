@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>She Said YES ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ffe6ee,#ffc2d1);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    font-size:22px;
+    animation:float 6s linear infinite;
+    opacity:0.8;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh); opacity:0;}
+    20%{opacity:1;}
+    100%{transform:translateY(-10vh); opacity:0;}
+}
+
+.container{
+    z-index:10;
+}
+
+h1{
+    font-size:38px;
+    color:#d63384;
+    font-family:cursive;
+    animation:pop 1s ease-in-out;
+}
+
+p{
+    margin-top:15px;
+    font-size:18px;
+    color:#b03060;
+}
+
+@keyframes pop{
+    0%{transform:scale(0.5);}
+    100%{transform:scale(1);}
+}
+
+button{
+    margin-top:25px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
+    background:#ff2e6e;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow:0 0 15px #ff6fa5;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Nanaaaaaa ❤️</h1>
+    <p>
+        You said YES 😍💖<br>
+        Now you are officially stuck with me forever 😌✨
+    </p>
+
+    <button onclick="goNext()">
+Click Me 💕
+</button>
+
+<script>
+function goNext(){
+    window.location.href = "final.html";
+}
+</script>
+
+</div>
+
+<script>
+
+/* Floating hearts */
+function createHeart(){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+    setTimeout(()=>{heart.remove();},6000);
+}
+setInterval(createHeart,500);
+
+function celebrate(){
+    document.querySelector("p").innerHTML =
+    "Heheee 😝<br>Best decision of your life Nanaaaa 💞<br>Love youuuuu ❤️";
+}
+
+</script>
+
+</body>
+</html>
