@@ -51,10 +51,8 @@ img {
     margin-bottom: 20px;
 }
 
-.kneel { font-size: 50px; margin-bottom: 10px; }
-
-h2 { font-size: 28px; margin: 5px 0; color: #ff99cc; }
-h1 { font-size: 32px; margin: 10px 0; color: #ff66b3; }
+h2 { font-size: 26px; margin: 5px 0; color: #ff99cc; }
+h1 { font-size: 30px; margin: 10px 0; color: #ff66b3; }
 
 p {
     font-size: 18px;
@@ -80,13 +78,28 @@ p {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 180px;
-    height: 110px;
+    width: 200px;
+    height: 120px;
     display: none;
-    z-index: 200;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 0 20px #ff4da6;
+    z-index: 200;
+}
+
+/* Play Button */
+#playBtn {
+    display: none;
+    position: fixed;
+    bottom: 160px;
+    right: 30px;
+    padding: 8px 15px;
+    background: #ff4da6;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0 0 15px #ff66b3;
 }
 </style>
 </head>
@@ -97,7 +110,6 @@ p {
 
 <div id="container">
     <img src="https://i.ibb.co/VcrvH7Xt/naana.jpg">
-    <div class="kneel">💍❤️</div>
     <h2>Happy Valentine’s Day Bava</h2>
     <h1>Will You Stay With Me Forever?</h1>
     <p>
@@ -109,15 +121,8 @@ p {
     </p>
 </div>
 
-<!-- Updated Streamable Video -->
-<div id="cornerVideo">
-<iframe id="myVideo"
-allow="autoplay; fullscreen"
-allowfullscreen
-src=""
-style="border:none; width:100%; height:100%;">
-</iframe>
-</div>
+<div id="cornerVideo"></div>
+<button id="playBtn">Tap to play video ❤️</button>
 
 <script>
 
@@ -133,16 +138,27 @@ function startExperience() {
     container.style.opacity = "1";
     container.style.transform = "scale(1)";
 
-    // Start heart blasts
     setInterval(createHeart, 120);
 
-    // Show and autoplay video
-    const videoBox = document.getElementById("cornerVideo");
-    const video = document.getElementById("myVideo");
-
-    video.src = "https://streamable.com/e/kb8anx?autoplay=1&muted=1";
-    videoBox.style.display = "block";
+    document.getElementById("playBtn").style.display = "block";
 }
+
+document.getElementById("playBtn").addEventListener("click", function() {
+
+    const videoBox = document.getElementById("cornerVideo");
+
+    videoBox.innerHTML = `
+        <iframe 
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        src="https://streamable.com/e/kb8anx?autoplay=1"
+        style="border:none; width:100%; height:100%;">
+        </iframe>
+    `;
+
+    videoBox.style.display = "block";
+    this.style.display = "none";
+});
 
 function createHeart() {
     const heart = document.createElement("div");
@@ -159,6 +175,3 @@ function createHeart() {
 
 </body>
 </html>
-
-
-    
