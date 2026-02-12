@@ -85,6 +85,17 @@ p {
     overflow: hidden;
     box-shadow: 0 0 20px #ff4da6;
     z-index: 200;
+    position: relative;
+}
+
+/* Overlay Photo */
+#videoOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+    pointer-events: none;
 }
 
 /* Play Button */
@@ -152,8 +163,10 @@ document.getElementById("playBtn").addEventListener("click", function() {
         allow="autoplay; fullscreen"
         allowfullscreen
         src="https://streamable.com/e/kb8anx?autoplay=1"
-        style="border:none; width:100%; height:100%;">
+        style="border:none; width:100%; height:100%; position:absolute; z-index:1;">
         </iframe>
+
+        <img src="img.jpeg" id="videoOverlay">
     `;
 
     videoBox.style.display = "block";
